@@ -171,5 +171,6 @@ export default class ROS2TFClient extends EventEmitter {
      */
     dispose() {
         this._isDisposed = true;
+        this.actionClient.cancelGoal(this.goal_id);
     }
 }
