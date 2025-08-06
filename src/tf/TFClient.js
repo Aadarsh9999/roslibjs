@@ -62,7 +62,7 @@ export default class TFClient extends EventEmitter {
     this.actionClient = new ActionClient({
       ros: options.ros,
       serverName: this.serverName,
-      actionName: 'tf2_web_republisher/TFSubscriptionAction',
+      actionName: 'tf2_web_republisher_interfaces/TFSubscriptionAction',
       omitStatus: true,
       omitResult: true
     });
@@ -71,7 +71,7 @@ export default class TFClient extends EventEmitter {
     this.serviceClient = new Service({
       ros: options.ros,
       name: this.repubServiceName,
-      serviceType: 'tf2_web_republisher/RepublishTFs'
+      serviceType: 'tf2_web_republisher_interfaces/RepublishTFs'
     });
   }
   /**
@@ -156,7 +156,7 @@ export default class TFClient extends EventEmitter {
     this.currentTopic = new Topic({
       ros: this.ros,
       name: response.topic_name,
-      messageType: 'tf2_web_republisher/TFArray'
+      messageType: 'tf2_web_republisher_interfaces/TFArray'
     });
     this._subscribeCB = this.processTFArray.bind(this);
     this.currentTopic.subscribe(this._subscribeCB);
