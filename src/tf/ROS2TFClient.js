@@ -68,12 +68,8 @@ export default class ROS2TFClient extends EventEmitter {
             }
             const info = that.frameInfos[frameID];
             if (info) {
-                info.transform = new Transform({
-                    translation: transform.transform.translation,
-                    rotation: transform.transform.rotation
-                });
                 info.cbs.forEach(function (cb) {
-                    cb(info.transform);
+                    cb(transform);
                 });
             }
         }, this);
